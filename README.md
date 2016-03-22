@@ -1,12 +1,28 @@
-# Hipster
+# hipper
 
-Okay, so today I wrote a text editor in node.js and named it "hipster". 
-Because I am an asshole. 
+Slightly hipper than [Hipster](https://github.com/dominictarr/hipster).
+
+* Install: `npm i -g hipper`, then:
+* Run: `hipper`, or:
+* `hipper some-file.md`, or:
+* `hipper my-script.js`.
+
+This is 90% just a fork of the awesome [Hipster](http://npm.im/hipster)
+by [Dominic Tarr](http://dominictarr.com/).
+
+Basically just updated and modified to suit [myself](http://zacanger.com)
+a little better. Every bit of credit goes to @dominictarr. Most of his README
+is below (just slightly edited).
+
+--------
+
+Okay, so today I wrote a text editor in node.js and named it "hipster".
+Because I am an asshole.
 (and no one had already used the name for something more stupid)
 
-I had to cut some corners to get it done in a single day,  
-But it still came out pretty good,  
-I am editing this README with it right now.  
+I had to cut some corners to get it done in a single day,
+But it still came out pretty good,
+I am editing this README with it right now.
 
 ## Features
 
@@ -43,7 +59,7 @@ hip filename [options]
              # (if it deletes a whole word when you press backspace, enable this)
 ```
 
-`hipster` uses [rc](https://npm.im/rc) for unmanaging configuration. 
+`hipster` uses [rc](https://npm.im/rc) for unmanaging configuration.
 you should too.
 
 ## Controls
@@ -63,19 +79,19 @@ you should too.
 
 ## Preferred Terminals
 
-Some terminals interfere with Modifier keys. I've found the XTerm works best. 
+Some terminals interfere with Modifier keys. I've found the XTerm works best.
 If you use fancy terminals that have tabs and stuff then you may have trouble
 selecting text with key combinations like `Ctrl-Shift-Up/Down`.
 
 ## See Also
 
-If this editor is not hip enough for you, you may wish to consider 
+If this editor is not hip enough for you, you may wish to consider
 [EasyWriter](http://www.webcrunchers.com/stories/easywriter.html)
 
 ## Aknowledgements
 
 This module depends on [TooTallNate/keypress](https://github.com/tootallnate/keypress),
-[substack/node-charm](https://github.com/substack/node-charm) and 
+[substack/node-charm](https://github.com/substack/node-charm) and
 [Marak/colors.js](https://github.com/Marak/colors.js)
 
 But the most important thing is the playful oneupsmanship that exists in the node
@@ -90,3 +106,4 @@ Doesn't wrap lines or anything yet.
 ## License
 
 MIT
+
