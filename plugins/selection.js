@@ -2,7 +2,7 @@ module.exports = function (doc, keys, cursor) {
 
   var styles = require('../lib/styles')
 
-  //wether or not we are currently selecting text 
+  //wether or not we are currently selecting text
   var shift = false
 
   //we need to intercept after keypress
@@ -43,7 +43,7 @@ module.exports = function (doc, keys, cursor) {
 
   listeners.forEach(function (listener) {
     keys.on('keypress', listener)
-  })   
+  })
 
   keys.on('keypress', endSelection)
 

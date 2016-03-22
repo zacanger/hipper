@@ -1,56 +1,57 @@
 #!/usr/bin/env node
 
-var config = require('./lib/config')
+'use strict'
 
-if(config.v || config.version) {
+const
+  fs       = require('fs')
+, es       = require('event-stream')
+, Document = require('./lib/document')
+, keys     = require('./lib/keys')
+, config   = require('./lib/config')
+
+let render = require('./lib/render')
+require('ansi-recover')({cursor : true, mouse : true})
+
+if (config.v || config.version) {
   console.log(require('./package.json').version)
   process.exit()
 }
 
-require('ansi-recover')({cursor: true, mouse: true})
 
-var fs = require('fs')
-var Document = require('./lib/document')
-var keys = require('./lib/keys')
-var render = require('./lib/render')
-var es = require('event-stream')
+function hipper (rc, doc) {
 
-module.exports = Hipster
+  doc = doc || new Document() // internal representation of text file
 
-function Hipster (rc, doc) {
-
-  //internal representation of our text file
-  doc = doc || new Document()
-  
   render = render(doc, rc)
 
   require('keypress').enableMouse(process.stdin)
-  var input = process.stdin
-  if(rc.playback) {
+  let input = process.stdin
+  if (rc.playback) {
     input = fs.createReadStream(rc.playback).pipe(es.split()).pipe(es.parse())
-  } 
-  else {
+  } else {
     process.stdin.setRawMode(true)
     process.stdin.resume()
     input = process.stdin
   }
 
-  if(rc.output) {
-    var write = process.stdout.write
-    var os = fs.createWriteStream(rc.output)
-    process.stdout.write = function (data) {
+  if (rc.output) {
+    let
+      write = process.stdout.write
+    , os    = fs.createWriteStream(rc.output)
+    process.stdout.write = data => {
       os.write(JSON.stringify(data.toString()) + '\n')
       write.call(process.stdout, data)
     }
   }
 
-  if(rc.record) {
+  if (rc.record) {
     process.stdin.pipe(es.stringify()).pipe(fs.createWriteStream(rc.record))
   }
-  if(rc.raw) {
-    var write = process.stdout.write
-    var os = fs.createWriteStream(rc.raw)
-    process.stdout.write = function (data) {
+  if (rc.raw) {
+    let
+      write = process.stdout.write
+    , os    = fs.createWriteStream(rc.raw)
+    process.stdout.write = data => {
       os.write(data)
       write.call(process.stdout, data)
     }
@@ -65,52 +66,46 @@ function Hipster (rc, doc) {
 //  input.on('data', function (data) {
 //    console.error(['data', data.toString() ])
 //  })
-  
-  var hip = {
-    config: rc,
-    plugins: [],
 
-    //the list of things that want to draw.
-    renderers: render.renderers,
-
-    //the thing that owns drawing. 
-    render: render,
-
-    //pass this things to use
-    use: function (plugin) {
-      if(plugin)
+  const hip = {
+    config    : rc
+  , plugins   : []
+  , renderers : render.renderers /// list of things to draw
+  , render: render // thing that draws
+  , use (plugin) { // use things
+      if (plugin) {
         this.plugins.push(plugin)
+      }
       return this
-    },
-
-    //call all the plugins, passing them the things they will need.
-    init: function () {
-      var self = this
-      this.plugins.forEach(function (plug) {
+    }
+  , init () { // call plugins, pass them stuff
+      let self = this
+      this.plugins.forEach(plug => {
         plug.call(self, doc, keys, render)
       })
       render.redraw()
       return this
     }
   }
-
   return hip
 }
 
-if(!module.parent)
+if (!module.parent) {
 
-  Hipster(config)
-    .use(require('./plugins/basics'))
-    .use(require('./plugins/lines'))
-    .use(require('./plugins/indent'))
-    .use(require('./plugins/comment'))
-    .use(require('./plugins/search'))
-    .use(require('./plugins/entry'))
-    .use(require('./plugins/highlight'))
-    .use(require('./plugins/easy-writer'))
-    .use(require('./plugins/control'))
-    .use(require('./plugins/movement'))
-    .use(require('./plugins/selection')) //MUST come after movement.
-    .use(require('./plugins/line-nums')) //MUST come after selection.    
-    .init()
+  hipper(config)
+  .use(require('./plugins/basics'))
+  .use(require('./plugins/lines'))
+  .use(require('./plugins/indent'))
+  .use(require('./plugins/comment'))
+  .use(require('./plugins/search'))
+  .use(require('./plugins/entry'))
+  .use(require('./plugins/highlight'))
+  .use(require('./plugins/easy-writer'))
+  .use(require('./plugins/control'))
+  .use(require('./plugins/movement'))
+  .use(require('./plugins/selection')) //MUST come after movement.
+  .use(require('./plugins/line-nums')) //MUST come after selection.
+  .init()
+}
 
+module.exports = hipper

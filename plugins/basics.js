@@ -5,13 +5,13 @@ module.exports = function (doc, _, cursor) {
   var rc = this.config
 
   //if an argument was specified, pass it in
-  var file = rc._[0] || rc.file || 
+  var file = rc._[0] || rc.file ||
     join(__dirname, '..', 'README.md'), title = file
 
   rc.file = file
 
   function toLines(data) {
-    
+
     return data.split('\t').join('  ').split('\n')
       .map(function (e, i, a) {
       //add \n to every line
@@ -20,7 +20,7 @@ module.exports = function (doc, _, cursor) {
   }
 
   //try and open the file the user past in
-  //if it doesn't exit yet, we will write 
+  //if it doesn't exit yet, we will write
   //to it on Ctrl-S (see plugins/control)
 
   try {

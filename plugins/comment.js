@@ -1,54 +1,55 @@
+'use strict'
 
-//do something else here to inject script for the language of the file.
-//for example... 
+// do something else here to inject script for the language of the file.
+// for example...
 
-//  js   is //
-//  bash is #
-//  ini  is ;
-
-// I spend most of my time editing js, though. 
-// so I'll leave that for when it's more important.
-// don't comment out empty lines?
+// js   is //
+// bash is #
+// ini  is ;
 
 function comment (line) {
   return '//' + line
 }
+
 function uncomment (line) {
   return isCommented(line) ? line.replace('//', '') : line
 }
 
 function isCommented (line) {
-  var r =  /^\s*\/\//.test(line) || /^\s*$/.test(line)
+  let r =  /^\s*\/\//.test(line) || /^\s*$/.test(line)
   return r
 }
 
-module.exports = function (doc, keys) {
+module.exports = (doc, keys) => {
 
-  var rc = this.config
+  let rc = this.config
 
-  keys.on('keypress', function (ch, key) {
+  keys.on('keypress', (ch, key) => {
 
-    if('k' == key.name && key.ctrl) {
-      if(!doc.marks)
+    if ('k' == key.name && key.ctrl) {
+      if (!doc.marks) {
         doc.start().mark().down().mark().up().move()
-      var m = doc.marks[0]
-      var M = doc.marks[1]
-      var from = m.y
-      //only indent do not comment the last line if the cursor is at 0
-      var to   = M.y //M.x || M.y == m.y ? M.y : M.y - 1
-      //first decide if we will comment or uncomment.
-      //uncomment, if the lines all have comments at the start.
-      //else, comment.
+      }
+      let
+        m    = doc.marks[0]
+      , M    = doc.marks[1]
+      , from = m.y
+      , to   = M.y // M.x || M.y == m.y ? M.y : M.y - 1
+      // only indent do not comment the last line if the cursor is at 0
+      // first decide if we will comment or uncomment.
+      // uncomment, if the lines all have comments at the start.
+      // else, comment.
 
-      var commented = true
-      for(var i = from; i <= to; i++)
-        if(!isCommented(doc.lines[i]))
+      let commented = true
+      for (let i = from; i <= to; i++) {
+        if (!isCommented(doc.lines[i])) {
           commented = false
+        }
+      }
 
-      for(var i = from; i <= to; i++)
-        doc.updateLine(i,
-          (commented ? uncomment : comment) (doc.lines[i])
-        )
+      for (let i = from; i <= to; i++) {
+        doc.updateLine(i, (commented ? uncomment : comment) (doc.lines[i]))
+      }
     }
   })
 
