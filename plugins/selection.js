@@ -1,38 +1,37 @@
+'use strict'
+
 module.exports = function (doc, keys, cursor) {
 
-  var styles = require('../lib/styles')
+  const styles = require('../lib/styles')
 
-  //wether or not we are currently selecting text
-  var shift = false
+  let shift = false // currently selecting or not
 
-  //we need to intercept after keypress
-  //both before and after so that we can
-  //select text properly if the keypress
-  //has moved the cursor.
+  // intercept after keypress both before and after so we that we can
+  // select text properly if keypress moved cursor. so, we
+  // remove all listeners, add first listener, readd listeners,
+  // then add last listener.
 
-  //to achive this, remove all the listeners
-  //add our first listener, then readd the listeners
-  //then add our last listener.
-
-  var listeners = keys.listeners('keypress')
+  const listeners = keys.listeners('keypress')
   keys.removeAllListeners('keypress')
 
-  function startSelection (ch, key) {
-    //only start selection if it's a movement key.
-    if(/up|down|left|right|pageup|pagedown|home|end/.test(key.name))
+  function startSelection (ch, key) { // only start if movement key
+    if (/up|down|left|right|pageup|pagedown|home|end/.test(key.name)) {
       key.movement = true
 
-      //if it's shifted, _and_ they have pressed a directional key...
-      if(key.shift && key.movement) {
-        if(!shift) doc.unmark()
+      if (key.shift && key.movement) {
+        if (!shift) { // if both shifted and directional key
+          doc.unmark()
+        }
         shift = true
         doc.mark().move()
-      } else if (shift)
+      } else if (shift) {
         shift = false
+      }
+    }
   }
 
   function endSelection (ch, key) {
-    if(key.movement)
+    if (key.movement)
       if(key.shift)
         doc.mark().move()
       else  if(/up|down|left|right|pageup|pagedown|home|end/.test(key.name))
@@ -50,7 +49,7 @@ module.exports = function (doc, keys, cursor) {
 
   this.renderers.push(function (q, x, y) {
 
-    if(doc.marks) {
+    if (doc.marks) {
       console.error(doc.marks, y)
       var m = doc.marks[0]
       var M = doc.marks[1]
