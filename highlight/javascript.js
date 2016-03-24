@@ -12,18 +12,20 @@ const
 , primitive = /true|false|null|NaN/g
 // , iq = require('insert-queue')
 
-// todo: multiline support!
+// todo : multiline support!
+// todo : not overriding things in strings and comments, etc,
+// when they're keywords.
 
 exports.highlight = q => {
 // console.error('HIGHLIGHT JS', q)
-  q.wrap(rbrace    , styles.brightGrey)
-  q.wrap(sbrace    , styles.yellow)
-  q.wrap(cbrace    , styles.green)
+  q.wrap(rbrace    , styles.brightCyan)
+  q.wrap(sbrace    , styles.brightYellow)
+  q.wrap(cbrace    , styles.brightGreen)
   q.wrap(number    , styles.brightMagenta)
   q.wrap(string    , styles.red)
   q.wrap(primitive , styles.magenta)
-  q.wrap(comment   , styles.blue)
-  q.wrap(keyword   , styles.cyan)
+  q.wrap(comment   , styles.grey)
+  q.wrap(keyword   , styles.brightBlue)
 }
 
 exports.test = file => {
