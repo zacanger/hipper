@@ -68,4 +68,3 @@ str = '#aaaaa bbbb cc d\n'
 assert.equal(w.wordEnd(str, 4), 6)
 assert.equal(w.wordEnd(str, 6), 11)
 assert.equal(w.wordEnd(str, 0), 6)
-

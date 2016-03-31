@@ -1,12 +1,13 @@
-var assert = require('assert')
-var Document = require('../lib/document')
+const
+  assert  = require('assert')
+, Document = require('../lib/document')
 
 var doc = new Document()
 
 doc.lines = [
-  'first line\n',
-  'second line\n',
-  'third line\n'
+  'first line\n'
+, 'second line\n'
+, 'third line\n'
 ]
 
 // setting marks and gettingMarked.
@@ -32,7 +33,7 @@ doc.mark(5, 2)
 console.log(doc.lines, doc.marks)
 assert.equal(doc.getMarked(), 'line\nthird')
 
-// move back to the first line, 
+// move back to the first line,
 // the first mark we made will be anchored at 7, 1
 doc.mark (6, 0)
 
@@ -58,4 +59,3 @@ assert.equal(doc.getMarked(), ' line\nsecond line\nthird')
 doc.clearMarked()
 console.log(doc.lines)
 assert.equal(doc.lines[0], 'first line\n')
-
