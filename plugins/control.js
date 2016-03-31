@@ -1,20 +1,26 @@
+'use strict'
 
-//Ctrl-$X keys for controling hipster itself.
+// ctrl-whatever keys
+
+const
+  fs = require('fs')
+, cp = require('child_process')
 
 module.exports = function (doc, keys, render) {
 
   var rc = this.config
-  var fs = require('fs')
-  var cp = require('child_process')
 
   function send (args, write, cb) {
-    var cmd = args.shift()
-    var output = ''
-    var c = cp.spawn(cmd, args)
-    if(cb) {
+    var
+      cmd    = args.shift()
+    , output = ''
+    , c      = cp.spawn(cmd, args)
+
+    if (cb) {
       c.stdout.on('data', function (b) { output += b })
       c.stdout.on('end', function () { cb(null, output) })
     }
+
     c.on('error', function () {})
     c.stdin.write(write || '')
     c.stdin.end()
@@ -23,8 +29,7 @@ module.exports = function (doc, keys, render) {
   function clipIn () {
     if(process.platform === 'darwin') {
       send(['pbcopy'], doc.getMarked())
-    }
-    else if(process.platform === 'linux') {
+    } else if (process.platform === 'linux') {
       send(['xclip', '-i', '-selection', 'clipboard'], doc.getMarked())
     }
   }
@@ -34,41 +39,41 @@ module.exports = function (doc, keys, render) {
       doc.insert(paste)
     }
 
-    if(process.platform === 'darwin') {
+    if (process.platform === 'darwin') {
       send(['pbpaste'], '', cb)
-    }
-    else if(process.platform === 'linux') {
+    } else if (process.platform === 'linux') {
       send(['xclip', '-o', '-selection', 'clipboard'], '', cb)
     }
   }
 
-  keys.on('keypress', function (ch, key) {
+  keys.on('keypress', (ch, key) => {
 
-    if(key.ctrl) {
+    if (key.ctrl) {
       if(key.name == 's' && !rc.noSave) {
         fs.writeFileSync(rc.file, doc.lines.join(''), 'utf-8')
         return
       }
-      if(key.name == 'c') {
+      if (key.name == 'c') {
         clipIn()
       }
-      if(key.name == 'x') {
+      if (key.name == 'x') {
         clipIn()
         doc.clearMarked()
       }
-      if(key.name == 'p' || key.name == 'v') {
+      if (key.name == 'p' || key.name == 'v') {
         doc.clearMarked()
         clipOut()
       }
-      if(key.name == 'r')
+      if (key.name == 'r') {
         return render.redraw(), doc.move()
-      //delete current line
-      if(key.name == 'd')
+      }
+      if (key.name == 'd') {// delete current line
         return doc.start().deleteLines(doc.row, 1).move()
-      //select current line
-      if(key.name == 'l')
+      }
+      if (key.name == 'l') { // select current line
         doc.start().mark().down().mark().move()
-      if(key.name == 'q') {
+      }
+      if (key.name == 'q') {
         process.stdin.pause()
         process.exit()
       }

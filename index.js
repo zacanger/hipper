@@ -17,7 +17,6 @@ if (config.v || config.version) {
   process.exit()
 }
 
-
 function hipper (rc, doc) {
 
   doc = doc || new Document() // internal representation of text file
@@ -25,7 +24,9 @@ function hipper (rc, doc) {
   render = render(doc, rc)
 
   require('keypress').enableMouse(process.stdin)
+
   let input = process.stdin
+
   if (rc.playback) {
     input = fs.createReadStream(rc.playback).pipe(es.split()).pipe(es.parse())
   } else {
@@ -109,3 +110,4 @@ if (!module.parent) {
 }
 
 module.exports = hipper
+

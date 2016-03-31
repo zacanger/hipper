@@ -31,52 +31,54 @@ module.exports = function (doc, keys, cursor) {
   }
 
   function endSelection (ch, key) {
-    if (key.movement)
-      if(key.shift)
+    if (key.movement) {
+      if (key.shift) {
         doc.mark().move()
-      else  if(/up|down|left|right|pageup|pagedown|home|end/.test(key.name))
+      }
+      else if (/up|down|left|right|pageup|pagedown|home|end/.test(key.name)) {
         doc.unmark().move()
+      }
+    }
   }
 
   keys.on('keypress', startSelection)
 
-  listeners.forEach(function (listener) {
+  listeners.forEach(listener => {
     keys.on('keypress', listener)
   })
 
   keys.on('keypress', endSelection)
 
-
-  this.renderers.push(function (q, x, y) {
+  this.renderers.push((q, x, y) => {
 
     if (doc.marks) {
       console.error(doc.marks, y)
-      var m = doc.marks[0]
-      var M = doc.marks[1]
-      var diff = 0
+      var
+        m    = doc.marks[0]
+      , M    = doc.marks[1]
+      , diff = 0
 
-      //if the match starts and ends on the same line
-      if(m.y == M.y && m.y + 1 == y) {
+      // if the match starts and ends on the same line
+      if (m.y == M.y && m.y + 1 == y) {
         q.insertAfter (m.x, styles.inverse[0])
         q.insertBefore(M.x, styles.inverse[1])
       }
 
-      //if we are inbetween the first and last matched lines.
-      else if(m.y + 1 < y && y < M.y + 1) {
-
+      // if we are between first and last matched lines.
+      else if (m.y + 1 < y && y < M.y + 1) {
         q.insertAfter (0, styles.inverse[0])
         q.insertBefore(q.toString().length, styles.inverse[1])
       }
 
-      //if this is the first matched line
-      else if(m.y + 1 == y) {
+      // if this is the first matched line
+      else if (m.y + 1 == y) {
         q.insertAfter (m.x, styles.inverse[0])
         q.insertBefore(q.toString().length, styles.inverse[1])
       }
 
-      //if this is the last matched line (but highligh if x=0)
-      else if(M.y + 1 == y && M.x){
-        //if the first mark is on the same line, adjust for that.
+      // if this is the last matched line (but highlight if x=0)
+      else if (M.y + 1 == y && M.x) {
+        // if the first mark is on the same line, adjust for that.
         q.insertAfter (0, styles.inverse[0])
         q.insertBefore(M.x, styles.inverse[1])
       }
