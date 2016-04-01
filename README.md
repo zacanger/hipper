@@ -7,50 +7,41 @@ Slightly hipper than [Hipster](https://github.com/dominictarr/hipster).
 * `hipper some-file.md`, or:
 * `hipper my-script.js`.
 
-This is 90% just a fork of the awesome [Hipster](http://npm.im/hipster)
-by [Dominic Tarr](http://dominictarr.com/).
+## Why use this?
 
-Basically just updated and modified to suit [myself](http://zacanger.com)
-a little better. Every bit of credit goes to @dominictarr. Most of his README
-is below (just slightly edited).
+* Because you're a developer who needs to ssh into their droplet and make a quick change.
+* You don't want to take the time to learn `vi` just to add some API keys or something.
+* Nano is ugly and has weird keybinds.
+* You just want something quick and easy.
+* So. Here. Use this.
+
+This is a fork of the awesome [Hipster](http://npm.im/hipster) by [Dominic Tarr](http://dominictarr.com/).
+
+Updated and modified to suit [myself](http://zacanger.com) a little better.
+All credit goes to @dominictarr. Most of his README is below (just slightly edited).
 
 --------
 
-Okay, so today I wrote a text editor in node.js and named it "hipster".
-Because I am an asshole.
-(and no one had already used the name for something more stupid)
-
-I had to cut some corners to get it done in a single day,
-But it still came out pretty good,
-I am editing this README with it right now.
-
 ## Features
 
-Hipster has modern controls. no modes or silly stuff like that.
+Hipper has modern controls. no modes or silly stuff like that.
 
 * Selection of text (Shift + Arrows)
-* Copy/Paste        (`sudo apt-get install xclip`, on OSX, make a pull request)
-* Typing            (like, duh)
+* Copy/Paste        (`sudo apt-get install xclip`)
+* Typing            (duh)
 
 ## Unfeatures
 
-Hipster ain't got no:
+Hipper does not have:
 
-* Multiple Buffers  (use screen, [tmux interferes with controls too much])
-* Un Do             (use git)
+* Buffers           (use dvtm or screen [tmux interferes with controls])
+* Undo              (use git)
 * Friendly Warnings (deal with it)
-
-Will be easy to implement these so-called "features" as plugins.
 
 ## Usage
 
 ```
-npm install hipster -g
-```
-
-Then
-```
-hip filename [options]
+hipper filename [options]
 
 --margin     # Set to N >= 2 for line numbers.
 --page       # PageUp/Down jump size.
@@ -59,8 +50,8 @@ hip filename [options]
              # (if it deletes a whole word when you press backspace, enable this)
 ```
 
-`hipster` uses [rc](https://npm.im/rc) for unmanaging configuration.
-you should too.
+`hipper` uses [rc](https://npm.im/rc) for unmanaging configuration.
+This means you can have a `~/.hipperrc`.
 
 ## Controls
 
@@ -77,18 +68,15 @@ you should too.
  * Ctrl-S         - Save.
  * Ctrl-Q         - Quit.
 
-## Preferred Terminals
+## Terminals
 
-Some terminals interfere with Modifier keys. I've found the XTerm works best.
+Some terminals interfere with modifier keys. xterm works well.
 If you use fancy terminals that have tabs and stuff then you may have trouble
 selecting text with key combinations like `Ctrl-Shift-Up/Down`.
 
-## See Also
+## Credits
 
-If this editor is not hip enough for you, you may wish to consider
-[EasyWriter](http://www.webcrunchers.com/stories/easywriter.html)
-
-## Aknowledgements
+[Hipster](https://github.com/dominictarr/hipster).
 
 This module depends on [TooTallNate/keypress](https://github.com/tootallnate/keypress),
 [substack/node-charm](https://github.com/substack/node-charm) and
@@ -102,6 +90,7 @@ You know who you are!
 ## Known Issues
 
 Doesn't wrap lines or anything yet.
+Syntax highlighting breaks (try a keyword in a comment, for example).
 
 ## License
 
