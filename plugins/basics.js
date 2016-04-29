@@ -4,32 +4,29 @@ module.exports = function (doc, _, cursor) {
     fs   = require('fs')
   , join = require('path').join
 
-  var rc = this.config
+  let rc = this.config
 
   // if argument specified, pass in
-  var file = rc._[0] || rc.file ||
+  let file = rc._[0] || rc.file ||
     join(__dirname, '..', 'README.md'), title = file
 
   rc.file = file
 
-  function toLines(data) {
-
+  function toLines (data) {
     return data.split('\t').join('  ').split('\n')
-      .map(function (e, i, a) {
-      return e + '\n' // add \n to every line
-    })
+      .map((e, i, a) => e + '\n' // add \n to every line
+    )
   }
 
   // try to open passed in file; if no file, write to it on ctrl-s
-
   try {
-    var stat = fs.statSync(file)
+    let stat = fs.statSync(file)
     if (stat.isDirectory()) {
       console.error(file, 'is a directory')
       process.exit(1)
     }
     doc.lines = toLines(fs.readFileSync(file, 'utf-8'))
-    var last = doc.lines.pop()
+    let last = doc.lines.pop()
     if (last != '\n' || !doc.lines.length) {
       doc.lines.push(last)
     }
@@ -51,15 +48,18 @@ module.exports = function (doc, _, cursor) {
 
   //log to a file
   else if ('string' == typeof rc.debug) {
-    var
+    let
       inspect = require('util').inspect
     , ds      = fs.createWriteStream(rc.debug)
 
-    log = console.error = function () {
+    log = console.error = () => {
       ds.write([].slice.call(arguments).map(inspect).join(' ') + '\n')
     }
   }
 
-  else log = console.error // log to stderr. hipper file 2> debug.log
+  else {
+    log = console.error // log to stderr. hipper file 2> debug.log
+  }
 
 }
+

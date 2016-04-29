@@ -53,7 +53,7 @@ module.exports = function (doc, keys, cursor) {
 
     if (doc.marks) {
       console.error(doc.marks, y)
-      var
+      let
         m    = doc.marks[0]
       , M    = doc.marks[1]
       , diff = 0
@@ -87,3 +87,4 @@ module.exports = function (doc, keys, cursor) {
   })
 
 }
+

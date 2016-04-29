@@ -4,7 +4,7 @@ module.exports = function (doc, _, render) {
   let rc = this.config
   render.footer = 1
 
-  function pad(s, l, ch) {
+  function pad (s, l, ch) {
     while (s.length < l) {
       s = (ch || ' ') + s
     }
@@ -15,5 +15,7 @@ module.exports = function (doc, _, render) {
     console.error([x,y])
     render.updateFooter(pad(y + '('+doc.lines.length+') ' + x, rc.columns - 2))
   })
+
   render.updateFooter(pad(1 + '('+doc.lines.length+') ' + 1, rc.columns - 2))
 }
+

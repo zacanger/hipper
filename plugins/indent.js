@@ -56,6 +56,9 @@ module.exports = (doc, keys) => {
 //    }
 //    doc.move()//something is putting the cursor in the wrong place.
     }
+
     return true
   })
+
 }
+

@@ -30,6 +30,7 @@ module.exports = (doc, keys) => {
       if (!doc.marks) {
         doc.start().mark().down().mark().up().move()
       }
+
       let
         m    = doc.marks[0]
       , M    = doc.marks[1]
@@ -54,3 +55,4 @@ module.exports = (doc, keys) => {
   })
 
 }
+

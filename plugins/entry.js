@@ -52,4 +52,6 @@ module.exports = function (doc, keys, cursor) {
       doc.clearMarked().write(ch).pref()
     }
   })
+
 }
+

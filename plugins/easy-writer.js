@@ -2,13 +2,13 @@ require('colors')
 
 module.exports = function (doc, _, render) {
 
-  var rc = this.config
+  let rc = this.config
 
   if (rc.showEnding === false) {
     return
   }
 
-  var ending = rc.showEnding === true ? '\u266b' : rc.showEnding
+  let ending = rc.showEnding === true ? '\u266b' : rc.showEnding
   ending = ending || '/'
 
   render.write((rc.title || 'README'))
@@ -20,3 +20,4 @@ module.exports = function (doc, _, render) {
   })
 
 }
+

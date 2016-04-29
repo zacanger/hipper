@@ -8,26 +8,26 @@ const
 
 module.exports = function (doc, keys, render) {
 
-  var rc = this.config
+  let rc = this.config
 
   function send (args, write, cb) {
-    var
+    let
       cmd    = args.shift()
     , output = ''
     , c      = cp.spawn(cmd, args)
 
     if (cb) {
-      c.stdout.on('data', function (b) { output += b })
-      c.stdout.on('end', function () { cb(null, output) })
+      c.stdout.on('data', b => output += b )
+      c.stdout.on('end', () => cb(null, output))
     }
 
-    c.on('error', function () {})
+    c.on('error', err => {})
     c.stdin.write(write || '')
     c.stdin.end()
   }
 
   function clipIn () {
-    if(process.platform === 'darwin') {
+    if (process.platform === 'darwin') {
       send(['pbcopy'], doc.getMarked())
     } else if (process.platform === 'linux') {
       send(['xclip', '-i', '-selection', 'clipboard'], doc.getMarked())
@@ -49,7 +49,7 @@ module.exports = function (doc, keys, render) {
   keys.on('keypress', (ch, key) => {
 
     if (key.ctrl) {
-      if(key.name == 's' && !rc.noSave) {
+      if (key.name == 's' && !rc.noSave) {
         fs.writeFileSync(rc.file, doc.lines.join(''), 'utf-8')
         return
       }
@@ -67,7 +67,7 @@ module.exports = function (doc, keys, render) {
       if (key.name == 'r') {
         return render.redraw(), doc.move()
       }
-      if (key.name == 'd') {// delete current line
+      if (key.name == 'd') { // delete current line
         return doc.start().deleteLines(doc.row, 1).move()
       }
       if (key.name == 'l') { // select current line
@@ -80,4 +80,6 @@ module.exports = function (doc, keys, render) {
     }
 
   })
+
 }
+

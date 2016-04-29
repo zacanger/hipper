@@ -15,9 +15,11 @@ module.exports = function () {
 
   console.error(file, types)
 
-  for (var i = 0; i < types.length; i++) {
+  for (let i = 0; i < types.length; i++) {
     if (types[i].test(file)) {
       return this.renderers.push(types[i].highlight)
     }
   }
+
 }
+

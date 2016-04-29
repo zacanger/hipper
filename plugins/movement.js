@@ -1,22 +1,7 @@
 'use strict'
 
 module.exports = function (doc, keys, cursor) {
-  var rc = this.config
-
-//  var preferred = 0
-//
-//  function pref () {
-//    preferred = doc.column
-//    console.error('PREFERRED COLUMN', preferred)
-//  }
-//  function toPref() {
-//    if('undefined' === typeof preferred) doc.move()
-//    if(doc.line().length < preferred)
-//      doc.column = doc.line().length - 1
-//    else
-//      doc.column = preferred
-//    doc.move()
-//  }
+  let rc = this.config
 
   keys.on('keypress', (ch, key) => {
 
@@ -27,24 +12,19 @@ module.exports = function (doc, keys, cursor) {
         if (key.name == 'up') {
           (doc.isFirstLine() ? doc.start() : doc.up()). toPref().move()
         }
-
         if (key.name == 'down') {
           (doc.isLastLine() ? doc.end() : doc.down())
           .toPref().move()
         }
-
         if (key.name == 'left') {
           ((doc.isFirst() && !doc.isFirstLine() ? doc.up().end() : doc.left())).pref().move()
         }
-
         if (key.name == 'right') {
           ((doc.isLast() && !doc.isLastLine() ? doc.down().start() : doc.right())).pref().move()
         }
-
         if (key.name == 'end') {
           doc.end().pref().move()
         }
-
         if (key.name == 'home') {
           doc.start().pref().move()
         }
@@ -59,7 +39,6 @@ module.exports = function (doc, keys, cursor) {
         }
         doc.move().pref()
       }
-
       if (key.name == 'right') { // end of next word
         if (doc.isLast() && !doc.isLastLine()) {
           doc.down().start()
@@ -67,14 +46,10 @@ module.exports = function (doc, keys, cursor) {
           doc.next()
         }
         doc.move().pref()
-      }
-
-      // should next two use toPref() ??
-
+      } // should next two use toPref() ??
       if (key.name == 'up') { // start of previous non-whitespace line
         doc.prevSection().start().toPref().move()
       }
-
       if (key.name == 'down') { // start of previous non-whitespace line
         if (doc.isLastLine()) {
           doc.end()
@@ -83,11 +58,9 @@ module.exports = function (doc, keys, cursor) {
         }
         doc.toPref().move()
       }
-
       if (key.name == 'home') {
         doc.firstLine().start().move()
       }
-
       if (key.name == 'end') {
         doc.lastLine().end().move()
       }
@@ -116,3 +89,4 @@ module.exports = function (doc, keys, cursor) {
 
   console.error(keys)
 }
+

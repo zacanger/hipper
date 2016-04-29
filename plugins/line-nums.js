@@ -20,5 +20,8 @@ module.exports = function (doc) {
       y % 5 || (num = num.bold)
       q.insertBefore(0 ,num + ' ')
     }
+
   })
+
 }
+

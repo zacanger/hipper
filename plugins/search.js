@@ -51,11 +51,13 @@ module.exports = function (doc, keys, render) {
     for (doc.unmark(); lineNumber < doc.lines.length; lineNumber++, idx=0) {
       let match = doc.lines[lineNumber].indexOf(term, idx)
       if (match != -1) {
-        console.error('match line: ' + lineNumber + ' idx: ' + match)
+        console.error(`match line: ${lineNumber} idx: ${match}`)
         doc.pos(match, lineNumber).move().mark().pos(match + term.length, lineNumber).mark()
         return
       }
     }
     render.updateFooter('no matches')
   }
+
 }
+

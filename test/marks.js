@@ -1,5 +1,5 @@
 const
-  assert  = require('assert')
+  assert   = require('assert')
 , Document = require('../lib/document')
 
 var doc = new Document()
@@ -59,3 +59,4 @@ assert.equal(doc.getMarked(), ' line\nsecond line\nthird')
 doc.clearMarked()
 console.log(doc.lines)
 assert.equal(doc.lines[0], 'first line\n')
+
