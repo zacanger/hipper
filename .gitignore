@@ -11,14 +11,6 @@
 *.tar
 *~
 .completer.hist
-/.build/
-TAGS
-_build/
-build.js
-bundle
-bundle.js
-data
-db
 node_modules
 x/
 

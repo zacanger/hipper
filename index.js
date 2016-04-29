@@ -58,20 +58,10 @@ function hipper (rc, doc) {
     }
   }
 
-//  input.on('keypress', function (e, k) {
-//    console.error(e, k)
-//  })
-//  input.on('mousepress', function (e, m) {
-//    console.error('MMM', e, m)
-//  })
-//  input.on('data', function (data) {
-//    console.error(['data', data.toString() ])
-//  })
-
   const hip = {
     config    : rc
   , plugins   : []
-  , renderers : render.renderers /// list of things to draw
+  , renderers : render.renderers // list of things to draw
   , render: render // thing that draws
   , use (plugin) { // use things
       if (plugin) {
@@ -104,8 +94,8 @@ if (!module.parent) {
   .use(require('./plugins/easy-writer'))
   .use(require('./plugins/control'))
   .use(require('./plugins/movement'))
-  .use(require('./plugins/selection')) //MUST come after movement.
-  .use(require('./plugins/line-nums')) //MUST come after selection.
+  .use(require('./plugins/selection')) // MUST come after movement.
+  .use(require('./plugins/line-nums')) // MUST come after selection.
   .init()
 }
 
