@@ -32,3 +32,4 @@ exports.test = file => {
   return true
   return /\.(json|js)$/.test(file)
 }
+

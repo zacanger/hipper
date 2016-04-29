@@ -7,7 +7,7 @@ console.log('# find words forward')
 
 var m = w.next(str, 0)
 assert.ok(m)
-assert.equal(m.index, 7)
+assert.equal(m.index, 15)
 
 var m = w.next(str, 3)
 assert.ok(m)
@@ -30,10 +30,10 @@ var m = w.prev(str, 0)
 assert.equal(m, null)
 
 var m = w.prev(str, 3)
-assert.equal(m.index, 0)
+assert.equal(m.index, 1)
 
 var m = w.prev(str, 7)
-assert.equal(m.index, 0)
+assert.equal(m.index, 1)
 
 var m = w.prev(str, 14)
 assert.ok(m)
@@ -68,3 +68,4 @@ str = '#aaaaa bbbb cc d\n'
 assert.equal(w.wordEnd(str, 4), 6)
 assert.equal(w.wordEnd(str, 6), 11)
 assert.equal(w.wordEnd(str, 0), 6)
+
