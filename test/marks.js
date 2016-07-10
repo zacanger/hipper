@@ -59,4 +59,3 @@ assert.equal(doc.getMarked(), ' line\nsecond line\nthird')
 doc.clearMarked()
 console.log(doc.lines)
 assert.equal(doc.lines[0], 'first line\n')
-
