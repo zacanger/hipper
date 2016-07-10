@@ -15,6 +15,9 @@ const
 // todo : multiline support!
 // todo : not overriding things in strings and comments, etc,
 // when they're keywords.
+// http://stackoverflow.com/questions/2951915/javascript-reg-ex-to-match-whole-word-only-bound-only-by-whitespace
+// (^|$)
+// \s
 
 exports.highlight = q => {
 // console.error('HIGHLIGHT JS', q)
@@ -32,4 +35,3 @@ exports.test = file => {
   return true
   return /\.(json|js)$/.test(file)
 }
-

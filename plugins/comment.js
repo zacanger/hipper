@@ -2,20 +2,15 @@
 
 // do something else here to inject script for the language of the file.
 // for example...
-
 // js   is //
 // bash is #
 // ini  is ;
 
-function comment (line) {
-  return '//' + line
-}
+const comment = line => '//' + line
 
-function uncomment (line) {
-  return isCommented(line) ? line.replace('//', '') : line
-}
+const uncomment = line => isCommented(line) ? line.replace('//', '') : line
 
-function isCommented (line) {
+const isCommented = line => {
   let r =  /^\s*\/\//.test(line) || /^\s*$/.test(line)
   return r
 }
@@ -55,4 +50,3 @@ module.exports = (doc, keys) => {
   })
 
 }
-

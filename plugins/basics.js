@@ -62,4 +62,3 @@ module.exports = function (doc, _, cursor) {
   }
 
 }
-

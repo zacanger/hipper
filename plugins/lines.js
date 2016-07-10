@@ -18,4 +18,3 @@ module.exports = function (doc, _, render) {
 
   render.updateFooter(pad(1 + '('+doc.lines.length+') ' + 1, rc.columns - 2))
 }
-

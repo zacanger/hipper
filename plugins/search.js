@@ -60,4 +60,3 @@ module.exports = function (doc, keys, render) {
   }
 
 }
-

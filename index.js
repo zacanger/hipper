@@ -82,7 +82,6 @@ function hipper (rc, doc) {
 }
 
 if (!module.parent) {
-
   hipper(config)
   .use(require('./plugins/basics'))
   .use(require('./plugins/lines'))
@@ -100,4 +99,3 @@ if (!module.parent) {
 }
 
 module.exports = hipper
-

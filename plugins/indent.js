@@ -1,10 +1,8 @@
 'use strict'
 
-function indent (line) {
-  return /^\s*$/.test(line) ? line : '  ' + line
-}
+const indent = line => /^\s*$/.test(line) ? line : '  ' + line
 
-function deindent (line) {
+const deindent = line => {
   if (line == '\n') {
     return line
   }
@@ -61,4 +59,3 @@ module.exports = (doc, keys) => {
   })
 
 }
-

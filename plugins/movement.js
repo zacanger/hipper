@@ -89,4 +89,3 @@ module.exports = function (doc, keys, cursor) {
 
   console.error(keys)
 }
-

@@ -87,4 +87,3 @@ module.exports = function (doc, keys, cursor) {
   })
 
 }
-

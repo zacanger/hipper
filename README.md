@@ -11,7 +11,7 @@ Slightly hipper than [Hipster](https://github.com/dominictarr/hipster).
 
 * Because you're a developer who needs to ssh into their droplet and make a quick change.
 * You don't want to take the time to learn `vi` just to add some API keys or something.
-* Nano is ugly and has weird keybinds.
+* Nano is ugly and has weird keybinds, and also it's disappearing from GNU.
 * You just want something quick and easy.
 * So. Here. Use this.
 
@@ -19,6 +19,9 @@ This is a fork of the awesome [Hipster](http://npm.im/hipster) by [Dominic Tarr]
 
 Updated and modified to suit [myself](http://zacanger.com) a little better.
 All credit goes to @dominictarr. Most of his README is below (just slightly edited).
+
+Contributing: PLEASE DO! Check out `highlight/javascript.js` to see what I especially need help with.
+More syntax files would also be welcome! And any other fixes anyone has.
 
 --------
 
@@ -95,4 +98,3 @@ Syntax highlighting breaks (try a keyword in a comment, for example).
 ## License
 
 MIT
-
