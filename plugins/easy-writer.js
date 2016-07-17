@@ -1,15 +1,13 @@
 require('colors')
 
 module.exports = function (doc, _, render) {
-
-  let rc = this.config
+  const rc = this.config
 
   if (rc.showEnding === false) {
     return
   }
 
-  let ending = rc.showEnding === true ? '\u266b' : rc.showEnding
-  ending = ending || '/'
+  const ending = (rc.showEnding === true ? '\u266b' : rc.showEnding) || '/'
 
   render.write((rc.title || 'README'))
 
@@ -18,5 +16,4 @@ module.exports = function (doc, _, render) {
       q.string = q.string + ending.red
     }
   })
-
 }
