@@ -2,33 +2,24 @@
 
 const
   styles    = require('../lib/styles')
-, keyword   = /break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|function|if|implements|import|in|instanceof|interface|let|new|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|var|void|while|with|yield/g
+, keyword   = /\s(break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|function|if|implements|import|in|instanceof|interface|let|new|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\s/g
 , rbrace    = /[\(\)]/g
 , sbrace    = /[\[\]]/g
 , cbrace    = /[\{\}]/g
 , number    = /-?\d+(?:\.\d+)?(?:e-?\d+)?/g
-, string    = /('[^']*')|("[^"]*")/g
+, string    = /('[^']*')|("[^"]*")|(`[^`]*`)/g
 , comment   = /\/\/[^\n]*/g
-, primitive = /true|false|null|NaN/g
-// , iq = require('insert-queue')
-
-// todo : multiline support!
-// todo : not overriding things in strings and comments, etc,
-// when they're keywords.
-// http://stackoverflow.com/questions/2951915/javascript-reg-ex-to-match-whole-word-only-bound-only-by-whitespace
-// (^|$)
-// \s
+, primitive = /\s(true|false|null|NaN)\s/g
 
 exports.highlight = q => {
-// console.error('HIGHLIGHT JS', q)
   q.wrap(rbrace    , styles.brightCyan)
   q.wrap(sbrace    , styles.brightYellow)
   q.wrap(cbrace    , styles.brightGreen)
   q.wrap(number    , styles.brightMagenta)
-  q.wrap(string    , styles.red)
   q.wrap(primitive , styles.magenta)
-  q.wrap(comment   , styles.grey)
   q.wrap(keyword   , styles.brightBlue)
+  q.wrap(comment   , styles.grey)
+  q.wrap(string    , styles.red)
 }
 
 exports.test = file => {

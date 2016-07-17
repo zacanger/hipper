@@ -61,6 +61,7 @@ function hipper (rc, doc) {
   const hip = {
     config    : rc
   , plugins   : []
+  , doc       : doc
   , renderers : render.renderers // list of things to draw
   , render: render // thing that draws
   , use (plugin) { // use things

@@ -8,7 +8,9 @@ const
 
 module.exports = function (doc, keys, render) {
 
-  let rc = this.config
+  let
+    saved = false
+  , rc    = this.config
 
   function send (args, write, cb) {
     let
@@ -47,9 +49,11 @@ module.exports = function (doc, keys, render) {
   }
 
   keys.on('keypress', (ch, key) => {
+    console.error(ch, key)
 
     if (key.ctrl) {
       if (key.name == 's' && !rc.noSave) {
+        saved = true
         fs.writeFileSync(rc.file, doc.lines.join(''), 'utf-8')
         return
       }
@@ -75,7 +79,7 @@ module.exports = function (doc, keys, render) {
       }
       if (key.name == 'q') {
         process.stdin.pause()
-        process.exit()
+        process.exit(saved ? 0 : 1)
       }
     }
 

@@ -20,5 +20,4 @@ module.exports = function () {
       return this.renderers.push(types[i].highlight)
     }
   }
-
 }
