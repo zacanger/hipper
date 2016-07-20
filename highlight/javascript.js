@@ -2,14 +2,14 @@
 
 const
   styles    = require('../lib/styles')
-, keyword   = /\s(break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|function|if|implements|import|in|instanceof|interface|let|new|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\s/g
+, keyword   = /\b(break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|function|if|implements|import|in|instanceof|interface|let|new|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/g
 , rbrace    = /[\(\)]/g
 , sbrace    = /[\[\]]/g
 , cbrace    = /[\{\}]/g
 , number    = /-?\d+(?:\.\d+)?(?:e-?\d+)?/g
 , string    = /('[^']*')|("[^"]*")|(`[^`]*`)/g
 , comment   = /\/\/[^\n]*/g
-, primitive = /\s(true|false|null|NaN)\s/g
+, primitive = /\b(true|false|null|NaN)\b/g
 
 exports.highlight = q => {
   q.wrap(rbrace    , styles.brightCyan)
