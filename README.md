@@ -3,43 +3,25 @@
 Slightly hipper than [Hipster](https://github.com/dominictarr/hipster).
 
 * Install: `npm i -g hipper`, then:
-* Run: `hipper`, or:
-* `hipper some-file.md`, or:
-* `hipper my-script.js`.
+* run `hipper`, as in `hipper some-file.js`
 
 ## Why use this?
 
-* Because you're a developer who needs to ssh into their droplet and make a quick change.
-* You don't want to take the time to learn `vi` just to add some API keys or something.
-* Nano is ugly and has weird keybinds, and also it's disappearing from GNU.
-* You just want something quick and easy.
-* So. Here. Use this.
+* You're a dev who needs to ssh into a droplet and make a quick change.
+* You don't want to take the time to learn `vi`
+* Nano is ugly, has weird keybinds, and is disappearing from GNU.
+* Because I'm cool and you like me.
 
-This is a fork of the awesome [Hipster](http://npm.im/hipster) by [Dominic Tarr](http://dominictarr.com/).
+This is a fork of the awesome [Hipster](http://npm.im/hipster) by
+[Dominic Tarr](http://dominictarr.com/).
 
 Updated and modified to suit [myself](http://zacanger.com) a little better.
-All credit goes to @dominictarr. Most of his README is below (just slightly edited).
+All credit goes to @dominictarr. Much of the README below is his, as well.
 
-Contributing: PLEASE DO! Check out `highlight/javascript.js` to see what I especially need help with.
-More syntax files would also be welcome! And any other fixes anyone has.
+Contributing: please do! Syntax files are welcome. Anyone with regular expression
+skills, definitely welcome. Any other fixes or features, probably welcome.
 
 --------
-
-## Features
-
-Hipper has modern controls. no modes or silly stuff like that.
-
-* Selection of text (Shift + Arrows)
-* Copy/Paste        (`sudo apt-get install xclip`)
-* Typing            (duh)
-
-## Unfeatures
-
-Hipper does not have:
-
-* Buffers           (use dvtm or screen [tmux interferes with controls])
-* Undo              (use git)
-* Friendly Warnings (deal with it)
 
 ## Usage
 
@@ -53,10 +35,21 @@ hipper filename [options]
              # (if it deletes a whole word when you press backspace, enable this)
 ```
 
-`hipper` uses [rc](https://npm.im/rc) for unmanaging configuration.
+Hipper has simple controls.
+
+* Selection   (Shift + Arrows)
+* Copy/Paste  (`sudo apt-get install xclip`)
+
+Hipper does not have:
+
+* Buffers           (use dvtm or screen [tmux interferes with controls])
+* Undo              (use git)
+* Friendly Warnings (deal with it)
+
+`hipper` uses [rc](https://npm.im/rc) for configuration.
 This means you can have a `~/.hipperrc`.
 
-## Controls
+### Controls
 
  * Arrows         - Slow Movement.
  * Ctrl-Arrows    - Fast Movement.
@@ -71,30 +64,25 @@ This means you can have a `~/.hipperrc`.
  * Ctrl-S         - Save.
  * Ctrl-Q         - Quit.
 
-## Terminals
+### Terminals
 
 Some terminals interfere with modifier keys. xterm works well.
 If you use fancy terminals that have tabs and stuff then you may have trouble
 selecting text with key combinations like `Ctrl-Shift-Up/Down`.
 
-## Credits
+### Credits
 
 [Hipster](https://github.com/dominictarr/hipster).
 
-This module depends on [TooTallNate/keypress](https://github.com/tootallnate/keypress),
-[substack/node-charm](https://github.com/substack/node-charm) and
-[Marak/colors.js](https://github.com/Marak/colors.js)
+This module depends on [keypress](https://github.com/tootallnate/keypress),
+[node-charm](https://github.com/substack/node-charm) and
+[colors.js](https://github.com/Marak/colors.js) (among some other things).
 
-But the most important thing is the playful oneupsmanship that exists in the node
-community regarding ansi/terminal art. Without that I would probably not have attempted this.
+### Known Issues
 
-You know who you are!
+Doesn't wrap lines (just keep your lines short).
+Syntax highlighting is not great (try a keyword in a comment, for example).
 
-## Known Issues
-
-Doesn't wrap lines or anything yet.
-Syntax highlighting breaks (try a keyword in a comment, for example).
-
-## License
+### License
 
 MIT

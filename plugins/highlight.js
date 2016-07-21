@@ -1,8 +1,6 @@
 'use strict'
 
-const types = [
-  require('../highlight/javascript')
-]
+const types = [require('../highlight/javascript')]
 
 module.exports = function () {
   let
