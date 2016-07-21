@@ -1,7 +1,7 @@
 {
   "name": "hipper",
   "description": "An editor in your terminal! Fork of hipster.",
-  "version": "0.19.5",
+  "version": "0.19.6",
   "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (http://dominictarr.com)",
   "contributors": [
     "Zac Anger (http://zacanger.com)"
