@@ -9,7 +9,7 @@ const
 , number    = /-?\d+(?:\.\d+)?(?:e-?\d+)?/g
 , string    = /('[^']*')|("[^"]*")|(`[^`]*`)/g
 , comment   = /\/\/[^\n]*/g
-, primitive = /\b(true|false|null|NaN|toString|global|valueOf|window|element|prototype|constructor|document|escape|unescape|parseInt|parseFloat|setTimeout|clearTimeout|setInterval|clearInterval|isNaN|Infinity|Array|Object|Number|String|Symbol|Boolean|Function)\b/g
+, primitive = /\b(true|false|null|NaN|toString|global|valueOf|window|element|prototype|constructor|document|escape|unescape|parseInt|parseFloat|setTimeout|clearTimeout|setInterval|clearInterval|isNaN|Infinity|Array|Object|Number|String|Symbol|Boolean|Function|ArrayBuffer|DataView|Float32Array|Float64Array|Int8Array|Int16Array|Int32Array|Uint8Array|Uint8ClampedArray|Uint32Aray|arguments|Date|Error|Map|RegExp|Symbol|undefined|WeakMap|WeakSet|Set)\b/g
 
 exports.highlight = q => {
   q.wrap(rbrace    , styles.brightCyan)
