@@ -65,5 +65,4 @@ module.exports = function (doc, _, cursor) {
   else {
     log = console.error // log to stderr. hipper file 2> debug.log
   }
-
 }

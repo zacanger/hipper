@@ -16,12 +16,8 @@ const isCommented = line => {
 }
 
 module.exports = (doc, keys) => {
-
-  let rc = this.config
-
   keys.on('keypress', (ch, key) => {
-
-    if ('k' == key.name && key.ctrl) {
+    if (key.name === 'k' && key.ctrl) {
       if (!doc.marks) {
         doc.start().mark().down().mark().up().move()
       }
@@ -48,5 +44,4 @@ module.exports = (doc, keys) => {
       }
     }
   })
-
 }

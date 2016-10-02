@@ -5,7 +5,7 @@
 module.exports = function (doc) {
   let rc = this.config
 
-  function padNum(n, m) {
+  const padNum = (n, m) => {
     n = '' + n
     while (n.length < m) {
       n = '0' + n
@@ -16,11 +16,9 @@ module.exports = function (doc) {
   this.renderers.push((q, x, y) => {
     if (rc.margin) {
       let num = padNum(y, rc.margin - 1)
-      num = num[ y % 2 ? 'green' : 'yellow']
+      num = num[y % 2 ? 'green' : 'yellow']
       y % 5 || (num = num.bold)
-      q.insertBefore(0 ,num + ' ')
+      q.insertBefore(0, num + ' ')
     }
-
   })
-
 }

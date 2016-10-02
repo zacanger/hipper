@@ -3,7 +3,7 @@
 const indent = line => /^\s*$/.test(line) ? line : '  ' + line
 
 const deindent = line => {
-  if (line == '\n') {
+  if (line === '\n') {
     return line
   }
   let l = /^\s*/.exec(line)[0].length
@@ -11,10 +11,7 @@ const deindent = line => {
 }
 
 module.exports = (doc, keys) => {
-  let rc = this.config
-
   keys.on('keypress', (ch, key) => {
-
     if (key.name !== 'tab') {
       return
     }
@@ -57,5 +54,4 @@ module.exports = (doc, keys) => {
 
     return true
   })
-
 }
