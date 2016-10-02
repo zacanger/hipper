@@ -21,6 +21,10 @@ All credit goes to @dominictarr. Much of the README below is his, as well.
 Contributing: please do! Syntax files are welcome. Anyone with regular expression
 skills, definitely welcome. Any other fixes or features, probably welcome.
 
+If you're interested in improving highlighting or language support, check out
+the files under the highlight directory, and if you add a language, please also
+add it to `plugins/highlight.js` in your PR.
+
 --------
 
 ## Usage
