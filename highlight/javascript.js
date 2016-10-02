@@ -22,5 +22,4 @@ exports.highlight = q => {
   q.wrap(string    , styles.red)
 }
 
-exports.test = file =>
-  /\.(json|js|jsx)$/.test(file)
+exports.test = file => /\.(json|js|jsx)$/.test(file)

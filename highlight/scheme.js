@@ -6,15 +6,14 @@ const
 , rbrace    = /[\(\)]/g
 , number    = /-?\d+(?:\.\d+)?(?:e-?\d+)?/g
 , string    = /('[^']*')|("[^"]*")/g
-, comment   = /;/g
+, comment   = /#[^\n]/g
 
 exports.highlight = q => {
-  q.wrap(rbrace    , styles.brightCyan)
-  q.wrap(number    , styles.brightMagenta)
-  q.wrap(keyword   , styles.brightBlue)
-  q.wrap(comment   , styles.grey)
-  q.wrap(string    , styles.red)
+  q.wrap(rbrace  , styles.brightCyan)
+  q.wrap(number  , styles.brightMagenta)
+  q.wrap(keyword , styles.brightBlue)
+  q.wrap(comment , styles.grey)
+  q.wrap(string  , styles.red)
 }
 
-exports.test = file =>
-  /\.(scm|rkt)$/.test(file)
+exports.test = file => /\.(scm|rkt)$/.test(file)

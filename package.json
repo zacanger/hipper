@@ -1,10 +1,14 @@
 {
   "name": "hipper",
   "description": "An editor in your terminal! Fork of hipster.",
-  "version": "0.20.00",
-  "author": "'Dominic Tarr' <dominic.tarr@gmail.com> (http://dominictarr.com)",
+  "version": "0.20.01",
+  "author": {
+    "name": "Zac Anger",
+    "email": "zac@zacanger.com",
+    "url": "http://zacanger.com"
+  },
   "contributors": [
-    "Zac Anger (http://zacanger.com)"
+    "'Dominic Tarr' <dominic.tarr@gmail.com> (http://dominictarr.com)"
   ],
   "license": "MIT",
   "main": "index.js",
