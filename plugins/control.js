@@ -7,7 +7,6 @@ const
 , cp = require('child_process')
 
 module.exports = function (doc, keys, render) {
-
   let
     saved = false
   , rc    = this.config
@@ -19,11 +18,11 @@ module.exports = function (doc, keys, render) {
     , c      = cp.spawn(cmd, args)
 
     if (cb) {
-      c.stdout.on('data', b => output += b )
+      c.stdout.on('data', b => {output += b})
       c.stdout.on('end', () => cb(null, output))
     }
 
-    c.on('error', err => {})
+    c.on('error', err => console.error('err', err))
     c.stdin.write(write || '')
     c.stdin.end()
   }
@@ -52,37 +51,35 @@ module.exports = function (doc, keys, render) {
     console.error(ch, key)
 
     if (key.ctrl) {
-      if (key.name == 's' && !rc.noSave) {
+      if (key.name === 's' && !rc.noSave) {
         saved = true
         fs.writeFileSync(rc.file, doc.lines.join(''), 'utf-8')
         return
       }
-      if (key.name == 'c') {
+      if (key.name === 'c') {
         clipIn()
       }
-      if (key.name == 'x') {
+      if (key.name === 'x') {
         clipIn()
         doc.clearMarked()
       }
-      if (key.name == 'p' || key.name == 'v') {
+      if (key.name === 'p' || key.name === 'v') {
         doc.clearMarked()
         clipOut()
       }
-      if (key.name == 'r') {
+      if (key.name === 'r') {
         return render.redraw(), doc.move()
       }
-      if (key.name == 'd') { // delete current line
+      if (key.name === 'd') { // delete current line
         return doc.start().deleteLines(doc.row, 1).move()
       }
-      if (key.name == 'l') { // select current line
+      if (key.name === 'l') { // select current line
         doc.start().mark().down().mark().move()
       }
-      if (key.name == 'q') {
+      if (key.name === 'q') {
         process.stdin.pause()
         process.exit(saved ? 0 : 1)
       }
     }
-
   })
-
 }

@@ -4,34 +4,30 @@ module.exports = function (doc, keys, cursor) {
   let rc = this.config
 
   keys.on('keypress', (ch, key) => {
+    console.error(key)
 
-      console.error(key)
-
-      if (!key.ctrl && !key.meta) {
-
-        if (key.name == 'up') {
-          (doc.isFirstLine() ? doc.start() : doc.up()). toPref().move()
-        }
-        if (key.name == 'down') {
-          (doc.isLastLine() ? doc.end() : doc.down())
-          .toPref().move()
-        }
-        if (key.name == 'left') {
-          ((doc.isFirst() && !doc.isFirstLine() ? doc.up().end() : doc.left())).pref().move()
-        }
-        if (key.name == 'right') {
-          ((doc.isLast() && !doc.isLastLine() ? doc.down().start() : doc.right())).pref().move()
-        }
-        if (key.name == 'end') {
-          doc.end().pref().move()
-        }
-        if (key.name == 'home') {
-          doc.start().pref().move()
-        }
-
+    if (!key.ctrl && !key.meta) {
+      if (key.name === 'up') {
+        (doc.isFirstLine() ? doc.start() : doc.up()).toPref().move()
+      }
+      if (key.name === 'down') {
+        (doc.isLastLine() ? doc.end() : doc.down())
+        .toPref().move()
+      }
+      if (key.name === 'left') {
+        ((doc.isFirst() && !doc.isFirstLine() ? doc.up().end() : doc.left())).pref().move()
+      }
+      if (key.name === 'right') {
+        ((doc.isLast() && !doc.isLastLine() ? doc.down().start() : doc.right())).pref().move()
+      }
+      if (key.name === 'end') {
+        doc.end().pref().move()
+      }
+      if (key.name === 'home') {
+        doc.start().pref().move()
+      }
     } else if (key.ctrl || key.meta) {
-
-      if (key.name == 'left') { // start of previous word
+      if (key.name === 'left') { // start of previous word
         if (doc.isFirst() && !doc.isFirstLine()) {
           doc.up().end()
         } else {
@@ -39,7 +35,7 @@ module.exports = function (doc, keys, cursor) {
         }
         doc.move().pref()
       }
-      if (key.name == 'right') { // end of next word
+      if (key.name === 'right') { // end of next word
         if (doc.isLast() && !doc.isLastLine()) {
           doc.down().start()
         } else {
@@ -47,10 +43,10 @@ module.exports = function (doc, keys, cursor) {
         }
         doc.move().pref()
       } // should next two use toPref() ??
-      if (key.name == 'up') { // start of previous non-whitespace line
+      if (key.name === 'up') { // start of previous non-whitespace line
         doc.prevSection().start().toPref().move()
       }
-      if (key.name == 'down') { // start of previous non-whitespace line
+      if (key.name === 'down') { // start of previous non-whitespace line
         if (doc.isLastLine()) {
           doc.end()
         } else {
@@ -58,20 +54,20 @@ module.exports = function (doc, keys, cursor) {
         }
         doc.toPref().move()
       }
-      if (key.name == 'home') {
+      if (key.name === 'home') {
         doc.firstLine().start().move()
       }
-      if (key.name == 'end') {
+      if (key.name === 'end') {
         doc.lastLine().end().move()
       }
     }
 
-    if (key.name == 'pageup') {
+    if (key.name === 'pageup') {
       doc.row = Math.max(doc.row - rc.page, 0)
       doc.toPref().move()
     }
 
-    if (key.name == 'pagedown') {
+    if (key.name === 'pagedown') {
       doc.row = Math.min(doc.row + rc.page, doc.lines.length - 1)
       doc.toPref().move()
     }

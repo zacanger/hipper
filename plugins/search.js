@@ -1,14 +1,12 @@
 'use strict'
 
 module.exports = function (doc, keys, render) {
-  let
-    rc           = this.config
-  , term         = ''
-  , accumalating = false
+  let term         = ''
+  let accumalating = false
 
   keys.on('keypress', (ch, key) => {
     if (accumalating) {
-      if ('escape' == key.name) {
+      if (key.name === 'escape') {
         accumalating = false
         // to do: put back prev footer info once renderer support getFooter()
         render.updateFooter(' ')
@@ -17,8 +15,8 @@ module.exports = function (doc, keys, render) {
         accumalating = false
         search(term)
       } else {
-        if (key.name == 'backspace') {
-          term = term.substring(0, term.length-1)
+        if (key.name === 'backspace') {
+          term = term.substring(0, term.length - 1)
         } else {
           term += key.sequence || key.name
         }
@@ -31,7 +29,7 @@ module.exports = function (doc, keys, render) {
     }
 
     if (key.ctrl) {
-      if (key.name == 'f') {
+      if (key.name === 'f') {
         // to do: inc prev footer info once renderer support getFooter()
         render.updateFooter('find: ' + term)
         accumalating = true
@@ -40,7 +38,7 @@ module.exports = function (doc, keys, render) {
     }
   })
 
-  function search(term) {
+  function search (term) {
     let
       lineNumber = doc.row
     , idx        = doc.column
@@ -48,15 +46,19 @@ module.exports = function (doc, keys, render) {
     console.error('from line: ' + lineNumber + ' search for: ' + term)
 
     // only search first line from current column & clear any mark before starting
-    for (doc.unmark(); lineNumber < doc.lines.length; lineNumber++, idx=0) {
+    for (doc.unmark(); lineNumber < doc.lines.length; lineNumber++, idx = 0) {
       let match = doc.lines[lineNumber].indexOf(term, idx)
-      if (match != -1) {
+      if (match !== -1) {
         console.error(`match line: ${lineNumber} idx: ${match}`)
-        doc.pos(match, lineNumber).move().mark().pos(match + term.length, lineNumber).mark()
+        doc
+          .pos(match, lineNumber)
+          .move()
+          .mark()
+          .pos(match + term.length, lineNumber)
+          .mark()
         return
       }
     }
     render.updateFooter('no matches')
   }
-
 }
