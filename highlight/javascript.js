@@ -1,4 +1,4 @@
-'use strict'
+/* eslint-disable comma-spacing */
 
 const
   styles    = require('../lib/styles')
