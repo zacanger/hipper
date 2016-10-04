@@ -18,7 +18,6 @@ if (config.v || config.version) {
 }
 
 function hipper (rc, doc) {
-
   doc = doc || new Document() // internal representation of text file
 
   render = render(doc, rc)
@@ -84,19 +83,19 @@ function hipper (rc, doc) {
 
 if (!module.parent) {
   hipper(config)
-  .use(require('./plugins/basics'))
-  .use(require('./plugins/lines'))
-  .use(require('./plugins/indent'))
-  .use(require('./plugins/comment'))
-  .use(require('./plugins/search'))
-  .use(require('./plugins/entry'))
-  .use(require('./plugins/highlight'))
-  .use(require('./plugins/easy-writer'))
-  .use(require('./plugins/control'))
-  .use(require('./plugins/movement'))
-  .use(require('./plugins/selection')) // MUST come after movement.
-  .use(require('./plugins/line-nums')) // MUST come after selection.
-  .init()
+    .use(require('./plugins/basics'))
+    .use(require('./plugins/lines'))
+    .use(require('./plugins/indent'))
+    .use(require('./plugins/comment'))
+    .use(require('./plugins/search'))
+    .use(require('./plugins/entry'))
+    .use(require('./plugins/highlight'))
+    .use(require('./plugins/easy-writer'))
+    .use(require('./plugins/control'))
+    .use(require('./plugins/movement'))
+    .use(require('./plugins/selection')) // MUST come after movement.
+    .use(require('./plugins/line-nums')) // MUST come after selection.
+    .init()
 }
 
 module.exports = hipper

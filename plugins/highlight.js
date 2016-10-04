@@ -5,6 +5,7 @@ const types = [
 , require('../highlight/scheme')
 , require('../highlight/python')
 , require('../highlight/ruby')
+, require('../highlight/html')
 ]
 
 module.exports = function () {
