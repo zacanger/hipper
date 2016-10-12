@@ -1,7 +1,7 @@
 {
   "name": "hipper",
   "description": "An editor in your terminal! Fork of hipster.",
-  "version": "0.20.07",
+  "version": "0.21.0",
   "author": {
     "name": "Zac Anger",
     "email": "zac@zacanger.com",
