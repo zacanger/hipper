@@ -1,5 +1,3 @@
-'use strict'
-
 // actual entry of characters into text
 module.exports = function (doc, keys, cursor) {
   let weird = this.config.weird

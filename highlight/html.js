@@ -1,5 +1,3 @@
-/* eslint-disable comma-spacing */
-
 // if it's not html5, it's not in here
 const
   styles    = require('../lib/styles')

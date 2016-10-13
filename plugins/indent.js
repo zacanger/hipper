@@ -1,5 +1,3 @@
-'use strict'
-
 const indent = line => /^\s*$/.test(line) ? line : '  ' + line
 
 const deindent = line => {

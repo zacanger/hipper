@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = function (doc, keys, cursor) {
   const styles = require('../lib/styles')
 

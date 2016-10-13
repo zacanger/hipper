@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = function (doc, keys, render) {
   let term         = ''
   let accumalating = false

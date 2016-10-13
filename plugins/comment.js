@@ -1,5 +1,3 @@
-'use strict'
-
 // do something else here to inject script for the language of the file.
 // for example...
 // js   is //

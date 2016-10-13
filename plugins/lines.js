@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = function (doc, _, render) {
   let rc = this.config
   render.footer = 1

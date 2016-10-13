@@ -1,7 +1,4 @@
-'use strict'
-
 // line numbers are drawn into 'margin' space
-
 module.exports = function (doc) {
   let rc = this.config
 

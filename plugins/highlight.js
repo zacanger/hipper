@@ -1,5 +1,3 @@
-'use strict'
-
 const types = [
   require('../highlight/javascript')
 , require('../highlight/scheme')

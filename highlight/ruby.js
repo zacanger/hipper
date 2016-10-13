@@ -1,5 +1,3 @@
-/* eslint-disable comma-spacing */
-
 const
   styles    = require('../lib/styles')
 , keyword   = /\b(BEGIN|END|ENCODING|FILE|LINE|alias|and|begin|break|case|class|def|defined|do|else|elsif|end|ensure|false|for|if|in|module|next|nil|not|or|redo|rescue|retry|return|self|super|then|true|undef|unless|until|when|while|yield)\b/g
