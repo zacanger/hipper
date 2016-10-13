@@ -7,13 +7,10 @@ const
 , number    = /-?\d+(?:\.\d+)?(?:e-?\d+)?/g
 , string    = /('[^']*')|("[^"]*")/g
 , tag       = /(<([^>]+)>)/ig
-// , abrace    = /[<>]/g
-// , tag       = /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/
 
 exports.highlight = q => {
-  // q.wrap(abrace  , styles.brightCyan)
   q.wrap(tag     , styles.green)
-  q.wrap(number  , styles.brightMagenta)
+  q.wrap(number  , styles.magenta)
   q.wrap(string  , styles.red)
   q.wrap(keyword , styles.yellow)
 }
