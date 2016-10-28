@@ -16,6 +16,7 @@ if (config.v || config.version) {
 }
 
 function hipper (rc, doc) {
+  process.on('exit', () => process.stdout.write('\x1B[2J\x1B[0f'))
   doc = doc || new Document() // internal representation of text file
 
   render = render(doc, rc)

@@ -16,7 +16,7 @@ module.exports = function (doc, keys, render) {
     , c      = cp.spawn(cmd, args)
 
     if (cb) {
-      c.stdout.on('data', b => {output += b})
+      c.stdout.on('data', b => { output += b })
       c.stdout.on('end', () => cb(null, output))
     }
 
@@ -66,7 +66,8 @@ module.exports = function (doc, keys, render) {
         clipOut()
       }
       if (key.name === 'r') {
-        return render.redraw(), doc.move()
+        doc.move()
+        return render.redraw()
       }
       if (key.name === 'd') { // delete current line
         return doc.start().deleteLines(doc.row, 1).move()
