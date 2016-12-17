@@ -5,6 +5,7 @@ const types = [
 , require('../highlight/ruby')
 , require('../highlight/html')
 , require('../highlight/css')
+, require('../highlight/clj')
 ]
 
 module.exports = function () {
