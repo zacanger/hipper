@@ -10,6 +10,7 @@ const types = [
 , require('../highlight/c-like')
 , require('../highlight/haskell')
 , require('../highlight/go')
+, require('../highlight/lua')
 ]
 
 module.exports = function () {
