@@ -8,6 +8,7 @@ const types = [
 , require('../highlight/clj')
 , require('../highlight/sh')
 , require('../highlight/c')
+, require('../highlight/haskell')
 ]
 
 module.exports = function () {
