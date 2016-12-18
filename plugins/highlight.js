@@ -9,6 +9,7 @@ const types = [
 , require('../highlight/shell')
 , require('../highlight/c-like')
 , require('../highlight/haskell')
+, require('../highlight/go')
 ]
 
 module.exports = function () {
