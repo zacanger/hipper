@@ -7,6 +7,7 @@ const types = [
 , require('../highlight/css')
 , require('../highlight/clj')
 , require('../highlight/sh')
+, require('../highlight/c')
 ]
 
 module.exports = function () {
