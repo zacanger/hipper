@@ -9,6 +9,8 @@ const
 , comment = /\/\/[^\n]*/g
 , kList   = [
   'as'
+, 'async'
+, 'await'
 , 'break'
 , 'case'
 , 'catch'
