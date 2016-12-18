@@ -34,4 +34,4 @@ exports.highlight = q => {
   q.wrap(mediaspace    , styles.brightYellow)
 }
 
-exports.test = file => /\.(css|less|sass|scss|styl)$/.test(file)
+exports.test = file => /\.(css|less|pcss|sass|scss|styl)$/.test(file)

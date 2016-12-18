@@ -1,12 +1,115 @@
 const
-  styles    = require('../lib/styles')
-, keyword   = /\b(call|class|define|field|import|require|inherit|exit-handler|init-field|interface|let|values|mixin|lambda|override|protect|provide|public|rename|syntax|case|cond|unit|or|unless|when|else|for|each|letrec|map|or|names|abs|rules|car|caar|cdr|cddr|cadr|acos|apply|append|angle|asin|assoc|assq|assv|atan|boolean|cdddar|cdddd|ceiling|char|cons|cos|eq|equal|eqv|eval|even|exact|and|exp|expt|f|t|floor|force|gcd|input|port|output|lcm|length|list|string|vector|ref|tail|load|log|max|min|modulo|negative|not|null|number|odd|open|file|pair|quote|read|real|reverse|set|hash|write)\b/g
-, rbrace    = /[()]/g
-, hash      = /#/g
-, number    = /-?\d+(?:\.\d+)?(?:e-?\d+)?/g
-, string    = /('[^']*')|("[^"]*")/g
-, comment   = /;[^\n]/g
-, qmark     = /\?/g
+  styles  = require('../lib/styles')
+, makeRe  = require('./make-keyword-regex').caseSensitive
+, rbrace  = /[()]/g
+, hash    = /#/g
+, number  = /-?\d+(?:\.\d+)?(?:e-?\d+)?/g
+, string  = /('[^']*')|("[^"]*")/g
+, comment = /;[^\n]/g
+, qmark   = /\?/g
+, words   = [
+  'abs'
+, 'acos'
+, 'and'
+, 'angle'
+, 'append'
+, 'apply'
+, 'asin'
+, 'assoc'
+, 'assv'
+, 'atan'
+, 'boolean'
+, 'caar'
+, 'cadr'
+, 'call'
+, 'car'
+, 'case'
+, 'cdar'
+, 'cdddar'
+, 'cdddd'
+, 'cddr'
+, 'cdr'
+, 'ceiling'
+, 'char'
+, 'class'
+, 'cond'
+, 'cons'
+, 'cos'
+, 'define'
+, 'each'
+, 'else'
+, 'eq'
+, 'equal'
+, 'eqv'
+, 'eval'
+, 'even'
+, 'exact'
+, 'exit-handler'
+, 'exp'
+, 'expt'
+, 'f'
+, 'field'
+, 'file'
+, 'floor'
+, 'for'
+, 'force'
+, 'gcd'
+, 'hash'
+, 'import'
+, 'inherit'
+, 'init-field'
+, 'input'
+, 'interface'
+, 'lambda'
+, 'lcm'
+, 'length'
+, 'let'
+, 'letrec'
+, 'list'
+, 'load'
+, 'log'
+, 'map'
+, 'max'
+, 'min'
+, 'mixin'
+, 'modulo'
+, 'names'
+, 'negative'
+, 'not'
+, 'null'
+, 'number'
+, 'odd'
+, 'open'
+, 'or'
+, 'output'
+, 'override'
+, 'pair'
+, 'port'
+, 'protect'
+, 'provide'
+, 'public'
+, 'quasiquote'
+, 'quote'
+, 'read'
+, 'real'
+, 'ref'
+, 'rename'
+, 'require'
+, 'reverse'
+, 'rules'
+, 'set'
+, 'string'
+, 'syntax'
+, 't'
+, 'tail'
+, 'unit'
+, 'unless'
+, 'values'
+, 'vector'
+, 'when'
+, 'write'
+]
+, keyword = makeRe(words)
 
 exports.highlight = q => {
   q.wrap(rbrace  , styles.brightYellow)

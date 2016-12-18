@@ -1,7 +1,7 @@
 {
   "name": "hipper",
   "description": "Editor in your terminal. Fork of hipster.",
-  "version": "0.21.6",
+  "version": "0.22.0",
   "author": {
     "name": "Zac Anger",
     "email": "zac@zacanger.com",
@@ -45,5 +45,8 @@
   },
   "devDependencies": {
     "tap": "0.3.0"
+  },
+  "engines": {
+    "node": ">=5.0.0"
   }
 }
