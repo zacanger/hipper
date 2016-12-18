@@ -1,7 +1,7 @@
 // if it's not html5, it's not in here
 const
   styles  = require('../lib/styles')
-, makeRe  = require('./make-keyword-regex').caseInsensitive
+, { ci }  = require('./make-keyword-regex')
 , number  = /-?\d+(?:\.\d+)?(?:e-?\d+)?/g
 , string  = /('[^']*')|("[^"]*")/g
 , tag     = /(<([^>]+)>)/ig
@@ -118,7 +118,7 @@ const
 , 'video'
 , 'wbr'
 ]
-, keyword = makeRe(words)
+, keyword = ci(words)
 
 exports.highlight = q => {
   q.wrap(tag     , styles.green)

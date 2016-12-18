@@ -1,6 +1,6 @@
 const
   styles  = require('../lib/styles')
-, makeRe  = require('./make-keyword-regex').caseSensitive
+, { cs }  = require('./make-keyword-regex')
 , rbrace  = /[\(\)]/g
 , sbrace  = /[\[\]]/g
 , cbrace  = /[\{\}]/g
@@ -50,7 +50,7 @@ const
 , 'while'
 , 'yield'
 ]
-, keyword = makeRe(words)
+, keyword = cs(words)
 
 exports.highlight = q => {
   q.wrap(rbrace  , styles.brightCyan)
