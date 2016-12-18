@@ -256,4 +256,4 @@ exports.highlight = q => {
   q.wrap(string  , styles.red)
 }
 
-exports.test = file => /\.(hs|lhs)$/.test(file)
+exports.test = file => /\.(hs|lhs|purs)$/.test(file)
