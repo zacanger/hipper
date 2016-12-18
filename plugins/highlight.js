@@ -11,6 +11,7 @@ const types = [
 , require('../highlight/haskell')
 , require('../highlight/go')
 , require('../highlight/lua')
+, require('../highlight/elm')
 ]
 
 module.exports = function () {
