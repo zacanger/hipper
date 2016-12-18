@@ -5,9 +5,9 @@ const types = [
 , require('../highlight/ruby')
 , require('../highlight/html')
 , require('../highlight/css')
-, require('../highlight/clj')
-, require('../highlight/sh')
-, require('../highlight/c')
+, require('../highlight/clojure')
+, require('../highlight/shell')
+, require('../highlight/c-like')
 , require('../highlight/haskell')
 ]
 
