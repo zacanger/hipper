@@ -1,6 +1,6 @@
 const types = [
   require('../highlight/javascript')
-, require('../highlight/scheme')
+, require('../highlight/lisps')
 , require('../highlight/python')
 , require('../highlight/ruby')
 , require('../highlight/html')
