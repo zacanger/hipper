@@ -15,6 +15,7 @@ const types = [
 , require('../highlight/coffeescript')
 , require('../highlight/nginx')
 , require('../highlight/swift')
+, require('../highlight/rust')
 ]
 
 module.exports = function () {
