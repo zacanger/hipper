@@ -12,6 +12,7 @@ const types = [
 , require('../highlight/go')
 , require('../highlight/lua')
 , require('../highlight/elm')
+, require('../highlight/coffeescript')
 ]
 
 module.exports = function () {
