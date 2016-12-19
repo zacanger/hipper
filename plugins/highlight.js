@@ -13,6 +13,7 @@ const types = [
 , require('../highlight/lua')
 , require('../highlight/elm')
 , require('../highlight/coffeescript')
+, require('../highlight/nginx')
 ]
 
 module.exports = function () {
