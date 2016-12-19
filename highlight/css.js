@@ -2,27 +2,22 @@ const
   styles        = require('../lib/styles')
 , { cs }        = require('./make-keyword-regex')
 , comments      = /\/\*[\s\S]*?\*\//
-, whitespace    = /\s+/
-, bmh           = /"\\"\}\\""/
-, unspace1      = /(?:^|\})[^\{:]+\s+:+[^\{]*\{/
-, unspace2      = /\s+([!\{\};:>+\(\)\],])/
-, unspace3      = /([!\{\}:;>+\(\[,])\s+/
 , semicolons    = /;/
 , rgb           = /rgb\s*\(\s*([0-9,\s]+)\s*\)/
 , digits        = /\d+/
 , hexval        = /[0-9a-f]{2}/
-, emptyrules    = /[^\}]+\{;\}\n/
 , mediaspace    = /\band ?\(/
 , words         = [
-  '@block'
-, '@css'
-, '@font-face'
-, '@host'
-, '@keyframes'
-, '@media'
-, '@page'
-, '@supports'
-, '@viewport'
+  'block'
+, 'css'
+, 'font-face'
+, 'host'
+, 'keyframes'
+, 'media'
+, 'page'
+, 'supports'
+, 'viewport'
+, 'import'
 , 'above'
 , 'absolute'
 , 'activeborder'
@@ -1110,15 +1105,9 @@ const
 , keyword       = cs(words)
 
 exports.highlight = q => {
-  q.wrap(emptyrules    , styles.red)
   q.wrap(digits        , styles.brightBlue)
   q.wrap(comments      , styles.grey)
   q.wrap(semicolons    , styles.green)
-  q.wrap(unspace1      , styles.brightGreen)
-  q.wrap(unspace2      , styles.brightGreen)
-  q.wrap(unspace3      , styles.brightGreen)
-  q.wrap(bmh           , styles.yellow)
-  q.wrap(whitespace    , styles.brightYellow)
   q.wrap(hexval        , styles.magenta)
   q.wrap(rgb           , styles.magenta)
   q.wrap(mediaspace    , styles.brightYellow)
