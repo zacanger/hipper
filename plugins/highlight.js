@@ -17,6 +17,7 @@ const types = [
 , require('../highlight/rust')
 , require('../highlight/shell')
 , require('../highlight/swift')
+, require('../highlight/dart')
 ]
 
 module.exports = function () {
