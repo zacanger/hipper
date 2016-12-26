@@ -5,7 +5,7 @@ const
 , sbrace  = /[\[\]]/g
 , cbrace  = /[\{\}]/g
 , number  = /-?\d+(?:\.\d+)?(?:e-?\d+)?/g
-, string  = /('[^']*')|("[^"]*")|(`[^`]*`)/g
+, string  = /('[^']*')|("[^"]*")/g
 , comment = /\/\/[^\n]*/g
 , words   = [
   'String'
