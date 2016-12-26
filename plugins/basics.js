@@ -10,10 +10,11 @@ module.exports = function (doc, _, cursor) {
   let rc = this.config
 
   // if argument specified, pass in
-  let file = rc._[0] ||
+  const file = rc._[0] ||
     rc.file          ||
     join(__dirname, '..', 'README.md')
-  , title = file
+
+  let title = file
 
   rc.file = file
 

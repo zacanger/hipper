@@ -3,6 +3,7 @@ const types = [
 , require('../highlight/clojure')
 , require('../highlight/coffeescript')
 , require('../highlight/css')
+, require('../highlight/dart')
 , require('../highlight/elm')
 , require('../highlight/go')
 , require('../highlight/haskell')
@@ -17,7 +18,6 @@ const types = [
 , require('../highlight/rust')
 , require('../highlight/shell')
 , require('../highlight/swift')
-, require('../highlight/dart')
 ]
 
 module.exports = function () {
