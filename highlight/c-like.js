@@ -261,4 +261,4 @@ exports.highlight = q => {
   q.wrap(string  , styles.red)
 }
 
-exports.test = file => /\.(kts|kt|java|scala|sc|cs|c|cpp|h)$/.test(file)
+exports.test = file => /\.(kts|kt|java|scala|sc|cs|c|cpp|h|hpp)$/.test(file)
