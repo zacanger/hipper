@@ -1,6 +1,6 @@
 {
   "name": "hipper",
-  "description": "Editor in your terminal. Based on hipster.",
+  "description": "DEPRECATED. Editor in your terminal. Based on hipster.",
   "version": "0.22.23",
   "author": {
     "name": "Zac Anger",

@@ -1,5 +1,13 @@
 # hipper
 
+## DEPRECATED
+
+This module is deprecated (and, I guess, abandoned). If you need a simple
+terminal editor I recommend Nano or
+[openemacs](https://github.com/practicalswift/openemacs). If you need/want one
+written in Node for some reason, go with
+[Slap](https://github.com/slap-editor/slap).
+
 Slightly hipper than [Hipster](https://github.com/dominictarr/hipster).
 
 * Install: `npm i -g hipper`, then:
