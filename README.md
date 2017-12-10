@@ -33,7 +33,7 @@ If you're interested in improving highlighting or language support, check out
 the files under the highlight directory, and if you add a language, please also
 add it to `plugins/highlight.js` in your PR.
 
-![screenshot](http://zacanger.com/hipper.png)
+![screenshot](http://zacanger.com/assets/hipper.png)
 
 --------
 
